@@ -15,7 +15,7 @@ st.set_page_config(
 )
 
 # Custom header
-st.title("💼 FinCon & Financial Regulatory Intelligence Assistant")
+st.title("💼 Ziad-Hamed FinCon & Financial Regulatory Intelligence Assistant")
 st.markdown(
     "**Production Hybrid RAG** • Hierarchical Parent-Child Indexing • Cross-Encoder Reranker • Citation Enforcement"
 )
