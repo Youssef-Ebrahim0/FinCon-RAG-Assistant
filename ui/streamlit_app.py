@@ -38,17 +38,29 @@ st.markdown(
         --green: #2f8066;
     }
 
+    /* Keep the product palette stable even when the browser/Streamlit theme
+       changes. Every surface and text color is intentionally explicit. */
     html, body, [class*="css"] {
         font-family: 'DM Sans', sans-serif;
         color: var(--ink);
+        color-scheme: light;
     }
 
-    [data-testid="stAppViewContainer"] {
+    [data-testid="stAppViewContainer"],
+    [data-testid="stMain"],
+    [data-testid="stAppViewBlockContainer"] {
         background: #f7f9fb;
+        color: var(--ink);
     }
 
     [data-testid="stHeader"] {
-        background: rgba(247, 249, 251, 0.82);
+        background: #f7f9fb;
+    }
+
+    [data-testid="stMain"] p,
+    [data-testid="stMain"] label,
+    [data-testid="stMain"] [data-testid="stMarkdownContainer"] {
+        color: var(--ink);
     }
 
     [data-testid="stSidebar"] {
@@ -56,8 +68,20 @@ st.markdown(
         border-right: 1px solid rgba(255,255,255,0.08);
     }
 
-    [data-testid="stSidebar"] * {
+    [data-testid="stSidebar"] .stMarkdown,
+    [data-testid="stSidebar"] .stMarkdown p,
+    [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] [data-testid="stWidgetLabel"] p,
+    [data-testid="stSidebar"] [data-testid="stCaptionContainer"] {
         color: #eef4f8;
+    }
+
+    [data-testid="stSidebar"] [data-baseweb="select"] * {
+        color: #172433 !important;
+    }
+
+    [data-testid="stSidebar"] [data-baseweb="select"] input {
+        caret-color: #172433;
     }
 
     [data-testid="stSidebar"] [data-baseweb="select"] > div,
@@ -65,6 +89,19 @@ st.markdown(
     [data-testid="stSidebar"] [data-testid="stSlider"] {
         background: rgba(255,255,255,0.09);
         border-radius: 10px;
+    }
+
+    [data-testid="stSidebar"] [data-testid="stSlider"] [role="slider"] {
+        background: var(--gold);
+        border-color: var(--gold);
+    }
+
+    [data-testid="stSidebar"] button {
+        color: #eef4f8;
+    }
+
+    [data-testid="stSidebar"] [data-testid="stAlert"] {
+        color: #172433;
     }
 
     [data-testid="stSidebar"] hr {
@@ -169,6 +206,30 @@ st.markdown(
         box-shadow: 0 12px 32px rgba(19, 43, 65, 0.06);
     }
 
+    .query-shell textarea,
+    .query-shell input,
+    [data-testid="stTextArea"] textarea,
+    [data-testid="stTextInput"] input {
+        color: var(--ink) !important;
+        background: #ffffff !important;
+        border: 1px solid #cbd6e0 !important;
+        caret-color: var(--navy);
+    }
+
+    .query-shell textarea::placeholder,
+    [data-testid="stTextArea"] textarea::placeholder,
+    [data-testid="stTextInput"] input::placeholder {
+        color: #718094 !important;
+        opacity: 1;
+    }
+
+    .query-shell textarea:focus,
+    [data-testid="stTextArea"] textarea:focus,
+    [data-testid="stTextInput"] input:focus {
+        border-color: var(--navy) !important;
+        box-shadow: 0 0 0 1px var(--navy) !important;
+    }
+
     .answer-card {
         padding: 1.35rem 1.5rem;
         border: 1px solid #dbe5ed;
@@ -230,6 +291,7 @@ st.markdown(
         border: 0;
         border-radius: 10px;
         background: var(--navy);
+        color: #ffffff;
         font-weight: 700;
         box-shadow: 0 7px 16px rgba(11,31,51,0.16);
     }
@@ -237,6 +299,51 @@ st.markdown(
     div.stButton > button[kind="primary"]:hover {
         border: 0;
         background: var(--navy-2);
+        color: #ffffff;
+    }
+
+    div.stButton > button:not([kind="primary"]) {
+        color: var(--navy);
+        background: #ffffff;
+        border: 1px solid #cbd6e0;
+    }
+
+    [data-testid="stExpander"] {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #ffffff;
+    }
+
+    [data-testid="stExpander"] summary,
+    [data-testid="stExpander"] summary p,
+    [data-testid="stExpander"] [data-testid="stMarkdownContainer"] {
+        color: var(--ink) !important;
+    }
+
+    [data-testid="stMetric"] {
+        color: var(--ink);
+    }
+
+    [data-testid="stMetricValue"],
+    [data-testid="stMetricLabel"] {
+        color: var(--ink) !important;
+    }
+
+    [data-testid="stAlert"] {
+        color: var(--ink);
+        background: #ffffff;
+        border: 1px solid var(--line);
+    }
+
+    code {
+        color: #234d72;
+        background: #edf3f8;
+    }
+
+    pre, [data-testid="stCodeBlock"] {
+        background: #eef3f7 !important;
+        color: #172433 !important;
+        border: 1px solid #d5e0e9;
     }
 
     .footer-note {
@@ -259,7 +366,7 @@ with st.sidebar:
         """
         <div class="brand-lockup">
             <div class="brand-mark">ZH</div>
-            <div class="brand-name">ZIAD-HAMED</div>
+            <div class="brand-name">Youssef Ebrahim</div>
             <div class="brand-subtitle">Financial Controlling &amp;<br>Regulatory Intelligence</div>
         </div>
         """,
@@ -319,7 +426,7 @@ pipeline = get_pipeline()
 # -----------------------------------------------------------------------------
 # Main workspace
 # -----------------------------------------------------------------------------
-st.markdown('<div class="eyebrow">Ziad-Hamed Intelligence Workspace</div>', unsafe_allow_html=True)
+st.markdown('<div class="eyebrow">Youssef Ebrahim Intelligence Workspace</div>', unsafe_allow_html=True)
 hero_col, status_col = st.columns([5, 1.35], vertical_alignment="bottom")
 with hero_col:
     st.markdown('<h1 class="hero-title">Turn complex regulation<br>into confident decisions.</h1>', unsafe_allow_html=True)
@@ -428,6 +535,6 @@ if run_search:
             st.code(result.get("context_used", ""), language="markdown")
 
 st.markdown(
-    '<div class="footer-note">Ziad-Hamed Financial Regulatory Intelligence · Evidence before interpretation</div>',
+    '<div class="footer-note">Youssef Ebrahim Financial Regulatory Intelligence · Evidence before interpretation</div>',
     unsafe_allow_html=True,
 )
