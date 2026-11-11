@@ -149,3 +149,4 @@ if st.button("Generate Briefing", type="primary"):
                     
                 st.markdown("**Retrieved Regulatory Context:**")
                 st.code(result.get("context_used", ""), language="markdown")
+                
