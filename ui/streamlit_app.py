@@ -127,7 +127,7 @@ if st.button("🔍 Generate Briefing", type="primary"):
             st.markdown("### 📑 Executive Briefing")
             
             # تحويل الماركداون لـ HTML عشان التنسيقات (مثل الخط العريض) تشتغل جوة الـ div المخصص
-            html_answer = markdown.markdown(result['answer'])
+            html_answer = markdown.markdown(result['answer'], extensions=['extra'])
             st.markdown(f"<div class='executive-summary'>{html_answer}</div>", unsafe_allow_html=True)
             
             st.write("")
