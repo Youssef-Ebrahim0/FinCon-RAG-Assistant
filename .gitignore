@@ -2,6 +2,7 @@
 .env
 .env.local
 *.env
+!.env.example
 
 # Python Bytecode & Cache
 __pycache__/
@@ -24,6 +25,13 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+
+# Testing & Linting Cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
 # Virtual Environments
 venv/
